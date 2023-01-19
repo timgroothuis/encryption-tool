@@ -1,0 +1,47 @@
+#items-container {
+    width: 1200px;
+    height: 600px;
+    padding: 100px;
+    margin-left: 60px;
+    border-style: solid;
+    border-color: gray;
+    border-width: 4px;
+}
+
+.reviewitem {
+    width: 1200px;
+    height: 200px;
+    margin-bottom: 25px;
+    background-color: #ebebeb;
+    border-style: solid;
+    border-color: gray;
+    border-width: 0px;
+}
+
+.reviewtextcontainer {
+    height: 150px;
+    width: 850px;
+    float: left;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+.title {
+    font-family: 'IBM Plex Sans Condensed';
+    font-size: 34px;
+    float: top;
+    color: black;
+    text-decoration: none;
+    margin-right: 50px;
+}
+
+.content {
+    font-family: 'IBM Plex Sans Condensed';
+    font-size: 20px;
+}
+
+.reviewimage {
+    float: right;
+    margin-top: 25px;
+    margin-right: 50px;
+}

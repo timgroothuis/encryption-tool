@@ -110,9 +110,8 @@ std::vector<unsigned char> bitmaskGenerator(int size) {
 	// Valid bitmask sizes: 8-bit, 16-bit, 32-bit, 64-bit, 128-bit, 256-bit
 	std::vector<unsigned char> bitmask;
 	std::cout << "Generating bitmask key..." << std::endl;
+	srand(time(NULL));
 	for (int i = 0; i < size; i++) {
-		srand(time(NULL));
-		std::this_thread::sleep_for(std::chrono::milliseconds(1100));
 		bitmask.push_back(rand()%2);
 	}
 	std::cout << "Bitmask key generated! Save the key to decrypt your files: ";

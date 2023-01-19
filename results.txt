@@ -1,0 +1,4 @@
+-- v0.1 --
+0.03mb/s - super power saver
+0.08mb/s - high performance
+

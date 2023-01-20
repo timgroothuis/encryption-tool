@@ -1,3 +1,10 @@
+p {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #929292;
+}
+
 #navbarTitle {
     float: left;
     margin: 10.3px;
@@ -15,6 +22,11 @@
     font-family: 'Titillium Web', sans-serif;
     font-weight:400;
     color: white;
+    transition-duration: 0.5s;
+}
+
+#downloadButton:hover {
+    background-color: #0f9c0a;
 }
 
 #navbar {
@@ -24,4 +36,15 @@
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+.thankyou {
+    font-size:54px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight:900;
+    color: #929292;
+}
+
+.contentBody {
+    margin-top: 75px;
 }

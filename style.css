@@ -1,0 +1,27 @@
+#navbarTitle {
+    float: left;
+    margin: 10.3px;
+    font-family: 'Titillium Web', sans-serif;
+    font-size:36px;
+}
+
+#downloadButton {
+    background-color: #17e80c;
+    border-style: none;
+    border-radius: 5px;
+    height: 40px;
+    margin: 17.5px;
+    width: 120px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight:400;
+    color: white;
+}
+
+#navbar {
+    background-color: white;
+    height: 75px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}

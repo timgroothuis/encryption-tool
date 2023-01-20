@@ -3,5 +3,28 @@
     <head>
         <title>Informatica maatschappelijk project</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+
+        <!-- Import fonts from Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+
+        <!-- Ransomware demo download location -->
+        <script>
+            var downloadLocation;
+        </script>
     </head>
+    <body style="background-color: whitesmoke;margin:0%;">
+        <nav id="navbar">
+            <div>
+                <h1 id="navbarTitle">Maatschappelijk project</h1>
+                <button id="downloadButton" style="float:right;">Download</button>
+                <script>
+                    document.getElementById("downloadButton").onclick = function () {
+                        location.href = downloadLocation;
+                    };
+                </script>
+            </div>
+        </nav>
+    </body>
 </html>

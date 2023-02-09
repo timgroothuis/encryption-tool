@@ -48,3 +48,9 @@ p {
 .contentBody {
     margin-top: 75px;
 }
+
+#achtergrond {
+    background-image: url("resources/NF5CWqR9_4x.jpg");
+    filter: blur(8px);
+    -webkit-filter:blur(8px);
+}

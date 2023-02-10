@@ -10,6 +10,177 @@
 #include <algorithm>
 namespace fs = std::filesystem;
 
+std::string CharToString(unsigned char character){
+	if (character == 0) {
+		return "0";
+	}
+	else {
+		return "1";
+	}
+}
+
+std::string BinaryToHex(std::vector<unsigned char> binary) {
+	std::string hexString;
+	for (int i = 0; i < binary.size() / 4; i++) {
+		std::string currentHexChar;
+		currentHexChar = CharToString(binary[i * 4]) + CharToString(binary[i * 4 + 1]) + CharToString(binary[i * 4 + 2]) + CharToString(binary[i * 4 + 3]);
+		
+		if (currentHexChar == "0000") {
+			hexString += "0";
+		}
+		else if (currentHexChar == "0001") {
+			hexString += "1";
+		}
+		else if (currentHexChar == "0010") {
+			hexString += "2";
+		}
+		else if (currentHexChar == "0011") {
+			hexString += "3";
+		}
+		else if (currentHexChar == "0100") {
+			hexString += "4";
+		}
+		else if (currentHexChar == "0101") {
+			hexString += "5";
+		}
+		else if (currentHexChar == "0110") {
+			hexString += "6";
+		}
+		else if (currentHexChar == "0111") {
+			hexString += "7";
+		}
+		else if (currentHexChar == "1000") {
+			hexString += "8";
+		}
+		else if (currentHexChar == "1001") {
+			hexString += "9";
+		}
+		else if (currentHexChar == "1010") {
+			hexString += "A";
+		}
+		else if (currentHexChar == "1011") {
+			hexString += "B";
+		}
+		else if (currentHexChar == "1100") {
+			hexString += "C";
+		}
+		else if (currentHexChar == "1101") {
+			hexString += "D";
+		}
+		else if (currentHexChar == "1110") {
+			hexString += "E";
+		}
+		else if (currentHexChar == "1111") {
+			hexString += "F";
+		}
+	}
+	
+	return hexString;
+}
+
+std::vector<unsigned char> HexToBinary(std::string hexString) {
+	std::vector<unsigned char> binary;
+	for (char& c : hexString) {
+		if (c == '0') {
+			binary.push_back(0);
+			binary.push_back(0);
+			binary.push_back(0);
+			binary.push_back(0);
+		}
+		else if (c == '1') {
+			binary.push_back(0);
+			binary.push_back(0);
+			binary.push_back(0);
+			binary.push_back(1);
+		}
+		else if (c == '2') {
+			binary.push_back(0);
+			binary.push_back(0);
+			binary.push_back(1);
+			binary.push_back(0);
+		}
+		else if (c == '3') {
+			binary.push_back(0);
+			binary.push_back(0);
+			binary.push_back(1);
+			binary.push_back(1);
+		}
+		else if (c == '4') {
+			binary.push_back(0);
+			binary.push_back(1);
+			binary.push_back(0);
+			binary.push_back(0);
+		}
+		else if (c == '5') {
+			binary.push_back(0);
+			binary.push_back(1);
+			binary.push_back(0);
+			binary.push_back(1);
+		}
+		else if (c == '6') {
+			binary.push_back(0);
+			binary.push_back(1);
+			binary.push_back(1);
+			binary.push_back(0);
+		}
+		else if (c == '7') {
+			binary.push_back(0);
+			binary.push_back(1);
+			binary.push_back(1);
+			binary.push_back(1);
+		}
+		else if (c == '8') {
+			binary.push_back(1);
+			binary.push_back(0);
+			binary.push_back(0);
+			binary.push_back(0);
+		}
+		else if (c == '9') {
+			binary.push_back(1);
+			binary.push_back(0);
+			binary.push_back(0);
+			binary.push_back(1);
+		}
+		else if (c == 'A') {
+			binary.push_back(1);
+			binary.push_back(0);
+			binary.push_back(1);
+			binary.push_back(0);
+		}
+		else if (c == 'B') {
+			binary.push_back(1);
+			binary.push_back(0);
+			binary.push_back(1);
+			binary.push_back(1);
+		}
+		else if (c == 'C') {
+			binary.push_back(1);
+			binary.push_back(1);
+			binary.push_back(0);
+			binary.push_back(0);
+		}
+		else if (c == 'D') {
+			binary.push_back(1);
+			binary.push_back(1);
+			binary.push_back(0);
+			binary.push_back(1);
+		}
+		else if (c == 'E') {
+			binary.push_back(1);
+			binary.push_back(1);
+			binary.push_back(1);
+			binary.push_back(0);
+		}
+		else if (c == 'F') {
+			binary.push_back(1);
+			binary.push_back(1);
+			binary.push_back(1);
+			binary.push_back(1);
+		}
+	}
+	return binary;
+}
+
 std::vector<unsigned char> DecimalToBinary(unsigned char decimal) {
 	std::vector<unsigned char> binaryByte;
 	float currentDecimal = decimal;
@@ -110,9 +281,8 @@ std::vector<unsigned char> bitmaskGenerator(int size) {
 	// Valid bitmask sizes: 8-bit, 16-bit, 32-bit, 64-bit, 128-bit, 256-bit
 	std::vector<unsigned char> bitmask;
 	std::cout << "Generating bitmask key..." << std::endl;
+	srand(time(NULL));
 	for (int i = 0; i < size; i++) {
-		srand(time(NULL));
-		std::this_thread::sleep_for(std::chrono::milliseconds(1100));
 		bitmask.push_back(rand()%2);
 	}
 	std::cout << "Bitmask key generated! Save the key to decrypt your files: ";
@@ -126,7 +296,8 @@ std::vector<unsigned char> bitmaskGenerator(int size) {
 			bitmaskString += "0";
 		}
 	}
-	std::cout << bitmaskString << std::endl;
+	std::string hexKey = BinaryToHex(bitmask);
+	std::cout << hexKey << std::endl;
 	return bitmask;
 }
 
@@ -138,17 +309,7 @@ void EncryptionDecryptionProcess(bool decrypt, int bitmaskSize, std::string encr
 		std::cout << "Enter bitmask key: " << std::endl;
 		std::cin >> keyInput;
 
-		for (char& c : keyInput) {
-			if (c == '1') {
-				bitmask.push_back(1);
-			}
-			else if (c == '0') {
-				bitmask.push_back(0);
-			}
-			else {
-				std::cout << "Incorrect format!";
-			}
-		}
+		bitmask = HexToBinary(keyInput);
 	}
 	else {
 		bitmask = bitmaskGenerator(bitmaskSize);

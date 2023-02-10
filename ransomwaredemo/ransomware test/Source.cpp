@@ -11,6 +11,7 @@
 namespace fs = std::filesystem;
 
 std::string CharToString(unsigned char character){
+	// if character is 0, return a 0 string, if character is 1, return a 1 string
 	if (character == 0) {
 		return "0";
 	}
@@ -20,6 +21,7 @@ std::string CharToString(unsigned char character){
 }
 
 std::string BinaryToHex(std::vector<unsigned char> binary) {
+	// convert binary vector array to hex string
 	std::string hexString;
 	for (int i = 0; i < binary.size() / 4; i++) {
 		std::string currentHexChar;
@@ -79,6 +81,7 @@ std::string BinaryToHex(std::vector<unsigned char> binary) {
 }
 
 std::vector<unsigned char> HexToBinary(std::string hexString) {
+	// convert hex string to binary vector array
 	std::vector<unsigned char> binary;
 	for (char& c : hexString) {
 		if (c == '0') {
@@ -182,6 +185,7 @@ std::vector<unsigned char> HexToBinary(std::string hexString) {
 }
 
 std::vector<unsigned char> DecimalToBinary(unsigned char decimal) {
+	// convert unsigned char decimal to binary
 	std::vector<unsigned char> binaryByte;
 	float currentDecimal = decimal;
 	for (int i = 0; i < 8; i++) {

@@ -2,7 +2,7 @@
 
 ### Ransomware demo voor maatschappelijk project informatica
 
-* Bitmask algoritme
+* Encryptie met behulp van bitmask
 
 * 8-bit tot 256-bit encryptie
 

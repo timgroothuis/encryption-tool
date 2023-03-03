@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
 p {
     font-family: 'Titillium Web', sans-serif;
     font-size: 24px;
@@ -51,28 +55,54 @@ p {
     margin-top: 75px;
 }
 
-#achtergrond {
+#backgroundContainer {
+    height: 500px;
+    width:100%;
+}
+
+#background {
     background-image: url("resources/NF5CWqR9_4x.jpg");
     filter: blur(8px);
-    -webkit-filter:blur(8px);
+    -webkit-filter: blur(8px);
     height: 500px;
+    width: 100%;
     background-position: center;
     z-index: 0;
     resize: both;
     background-size: cover;
+    position: absolute;
 }
 
 #content {
     margin-top: 0px;
     background-color: white;
     width: 100%;
-    height: 500px;
+    height: auto;
     z-index: 1;
+    padding: 50px;
+    padding-top: 100px;
+}
+
+#footer {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+
+.footerItem {
+    display: inline-flex;
+    font-family: 'Titillium Web', sans-serif;
+    color: darkgray;
+    margin: 50px;
 }
 
 #navbarItems {
-    width: 600px;
+    width: auto;
     margin: 0px;
+    margin-right: 100px;
+    height: 75px;
     float: right;
 }
 
@@ -81,5 +111,50 @@ p {
     text-decoration: none;
     color: #6a6a6a;
     font-size: 20px;
-    padding: 20px;
+    margin: 22.3px;
+    transition-duration: 0.4s;
+    display: inline-flex;
+}
+
+.navbarLink:hover {
+    font-size: 24px;
+    margin: 22.3px; 
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #595959;
+}
+
+#backgroundTitle {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 52px;
+    position: absolute;
+    left: 40%;
+    top: 200px;
+    color: white;
+}
+
+.chapterContainer {
+    border-width: 2px;
+    border-radius: 15px;
+    border-color: darkgray;
+    border-style: solid;
+    width: 80%;
+    margin: 50px;
+    height: 300px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.secondaryChapterTitle {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 52px;
+    font-weight: 600;
+    margin-left: 50px;
+}
+
+.chapterDescription {
+    font-family: 'Titillium Web', sans-serif;
+    float: right;
+    margin-left: 100px;
+    width: 500px;
 }

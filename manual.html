@@ -1,31 +1,64 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Informatica maatschappelijk project</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+<head>
+    <title>Ransomware demo gebruik</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 
-        <!-- Import fonts from Google Fonts-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Import fonts from Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
 
-        <!-- Ransomware demo download location -->
-        <script>
-            var downloadLocation = "https://github.com/timgroothuis/encryption-tool/releases/download/v0.1/ransomware_demo.exe";
-        </script>
-    </head>
+    <!-- Import important JavaScript scripts-->
+    <script type="text/javascript" src="scripts.js"></script>
+
+    <!-- Ransomware demo download location -->
+    <script>
+        var downloadLocation = "https://github.com/timgroothuis/encryption-tool/releases/download/v1.0.0/ransomware_demo.exe";
+    </script>
+</head>
     <body style="background-color: whitesmoke;margin:0%;">
         <!-- Navbar -->
         <nav id="navbar">
             <div>
-                <h1 id="navbarTitle">Maatschappelijk project</h1>
-                <button id="downloadButton" style="float:right;">Download</button>
+                <h1 id="navbarTitle">Ransomware</h1>
+                <button id="downloadButton">Download</button>
+                <div id="navbarItems">
+                    <a class="navbarLink" href="watishet.html">Wat is het</a>
+                    <a class="navbarLink" href="strafbaar.html">Strafbaar</a>
+                    <a class="navbarLink" href="daders.html">Daders</a>
+                    <a class="navbarLink" href="slachtoffers.html">Slachtoffers</a>
+                    <a class="navbarLink" href="oplossingen.html">Oplossingen</a>
+                    <a class="navbarLink" href="evaluatie.html">Evaluatie</a>
+                </div>
             </div>
         </nav>
 
-        <!-- Manual -->
-        <div class="contentBody">
-            WIP
+        <!-- background image -->
+        <div id="backgroundContainer">
+            <div id="background">
+            </div>
+            <p id="backgroundTitle">Gebruik demo</p>
+        </div>
+
+        <!-- content -->
+        <div class="content" style="padding-top:100px;">
+            <p class="manualText">Voer het programma uit. Als je een melding van SmartScreen krijgt, druk op "More info" en dan op "Run anyway".</p><br />
+            <p class="manualText">Typ 'yes' of 'y' als je zeker weet dat je het programma wilt uitvoeren.</p><br />
+            <p class="manualText">Voer het volledige pad in van de folder die je wilt encrypten, maar kies geen folder met belangrijke bestanden<br />in het geval dat er iets mis gaat. Het word aangeraden om een folder te kiezen met bestanden die je kunt lezen,<br />zoals afbeeldingen, tekstbestanden of audiobestanden, zodat je de effecten van de encryptie het best ziet.</p><br />
+            <p class="manualText">Als je de folder wilt encrypten, typ 'encrypt'. Als je de folder wilt decrypten, typ 'decrypt'.</p><br />
+            <p class="manualText">In het geval dat je hebt gekozen voor encrypten, voer een sleutelgrootte in voor de encryptie.<br />Minimaal 8-bit encryptie is nodig, maar je kunt elke grootte kiezen zolang het deelbaar is door 8. Standaard is 256-bit.<br />Hoe groter de key is, hoe veiliger en beter de encryptie zal worden toegepast, maar geheugengebruik zal ook toenemen.</p><br />
+            <p class="manualText">BELANGRIJK: Kopieer de sleutel nadat hij gegenereert is en sla hem ergens op of bewaar hem ergens,<br />bijvoorbeeld in een tijdelijk tekstbestand. Zonder deze sleutel kun je je bestanden niet meer herstellen.</p><br />
+            <p class="manualText">In het geval dat je hebt gekozen voor decrypten, voer de sleutel in die je bij het encrypten hebt opgeslagen.<br />Check of de sleutel goed is ingevoerd. Als de sleutel niet ingevoerd is,<br />worden de bestanden vanwege de werking van het algoritme dubbel versleuteld, wat moeilijk te herstellen is.</p><br />
+            <p class="manualText">Zorg dat je geen bestanden die versleuteld worden geopend hebt in een programma. Dat kan voor problemen zorgen met de decryption.</p><br />
+            <p class="manualText">Nadat alles encrypted/decrypted is en er 'Done' staat in de CLI, kan je het programma afsluiten en de bestanden weer veilig openen.</p><br />
+            <p class="manualText">Voor de source code, klik <a href="https://github.com/timgroothuis/encryption-tool">hier</a> (ransomwaredemo/ransomware test/Source.cpp).</p>
+        </div>
+
+        <!-- Website footer -->
+        <div id="footer">
+            <a class="footerItem" href="https://github.com/timgroothuis/encryption-tool/releases/download/v1.0.0/ransomware_demo.exe">Download demo</a>
+            <a class="footerItem" href="https://github.com/timgroothuis/encryption-tool">GitHub repository</a>
         </div>
 
         <!-- Link scripts -->

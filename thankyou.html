@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>downloaden</title>
+        <title>Downloaden</title>
         <link rel="stylesheet" type="text/css" href="style.css">
 
         <!-- Import fonts from Google Fonts-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+        
+        <!-- Import important JavaScript scripts-->
+        <script type="text/javascript" src="scripts.js"></script>
+
 
         <!-- Init scripts -->
         <script>
-            var downloadLocation = "https://github.com/timgroothuis/encryption-tool/releases/download/v0.1/ransomware_demo.exe";
+            var downloadLocation = "https://github.com/timgroothuis/encryption-tool/releases/download/v1.0.0/ransomware_demo.exe";
 
             function loaded() {
                 location.href = downloadLocation;
@@ -22,16 +26,30 @@
         <!-- Navbar -->
         <nav id="navbar">
             <div>
-                <h1 id="navbarTitle">Maatschappelijk project</h1>
-                <button id="downloadButton" style="float:right;">Download</button>
+                <h1 id="navbarTitle">Ransomware</h1>
+                <button id="downloadButton">Download</button>
+                <div id="navbarItems">
+                    <a class="navbarLink" href="watishet.html">Wat is het</a>
+                    <a class="navbarLink" href="strafbaar.html">Strafbaar</a>
+                    <a class="navbarLink" href="daders.html">Daders</a>
+                    <a class="navbarLink" href="slachtoffers.html">Slachtoffers</a>
+                    <a class="navbarLink" href="oplossingen.html">Oplossingen</a>
+                    <a class="navbarLink" href="evaluatie.html">Evaluatie</a>
+                </div>
             </div>
         </nav>
 
         <!-- Thank you message -->
         <div class="contentBody" style="text-align: center;margin-top:200px;">
             <h1 class="thankyou"></h1>
-            <p class="thankyou" style="font-size:36px;font-weight:700;">download gaat beginnen</p>
-            <p id="manualLink" style="text-decoration:underline;">mabnual</p>
+            <p class="thankyou" style="font-size:36px;font-weight:700;">De download gaat beginnen</p>
+            <p id="manualLink" style="text-decoration:underline;">Lees de gebruiksaanwijzing voordat je het uitvoert</p>
+        </div>
+
+        <!-- Website footer -->
+        <div id="footer">
+            <a class="footerItem" href="https://github.com/timgroothuis/encryption-tool/releases/download/v1.0.0/ransomware_demo.exe">Download demo</a>
+            <a class="footerItem" href="https://github.com/timgroothuis/encryption-tool">GitHub repository</a>
         </div>
 
         <!-- Link scripts -->
@@ -39,7 +57,7 @@
             document.getElementById("downloadButton").onclick = function () {
                 location.href = "thankyou.html";
                 location.href = downloadLocation;
-                
+
             };
 
             document.getElementById("navbarTitle").onclick = function () {

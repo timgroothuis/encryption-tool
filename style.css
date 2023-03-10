@@ -9,6 +9,13 @@ p {
     color: #929292;
 }
 
+a {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #929292;
+}
+
 #navbarTitle {
     float: left;
     margin: 10.3px;
@@ -62,8 +69,8 @@ p {
 
 #background {
     background-image: url("resources/NF5CWqR9_4x.jpg");
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
+    filter: blur(8px) brightness(50%);
+    -webkit-filter: blur(8px) brightness(50%);
     height: 500px;
     width: 100%;
     background-position: center;
@@ -92,6 +99,7 @@ p {
 }
 
 .footerItem {
+    font-size: 14px;
     display: inline-flex;
     font-family: 'Titillium Web', sans-serif;
     color: darkgray;
@@ -127,10 +135,12 @@ p {
 #backgroundTitle {
     font-family: 'Titillium Web', sans-serif;
     font-size: 52px;
-    position: absolute;
-    left: 40%;
-    top: 200px;
+    text-align: center;
     color: white;
+    font-weight: 700;
+    position: relative;
+    top: 200px;
+    z-index: 2;
 }
 
 .chapterContainer {
@@ -157,4 +167,9 @@ p {
     float: right;
     margin-left: 100px;
     width: 500px;
+}
+
+.manualText {
+    margin: 10px;
+    text-align: center;
 }

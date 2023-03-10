@@ -8,4 +8,6 @@
 
 * 0.08mb/s
 
+* Alleen maar standaard C libaries en standaard Windows libraries worden gebruikt, geen third party libraries
+
 ###### Tim Groothuis - OLV Breda - 5VB

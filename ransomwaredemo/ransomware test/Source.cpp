@@ -8,9 +8,16 @@
 #include <stdio.h>
 #include <math.h>
 #include <algorithm>
+#include <sys/stat.h>
 namespace fs = std::filesystem;
 
+bool doesPathExist(const std::string &s) {
+	struct stat buffer;
+	return (stat(s.c_str(), &buffer) == 0);
+}
+
 std::string CharToString(unsigned char character){
+	// if character is 0, return a 0 string, if character is 1, return a 1 string
 	if (character == 0) {
 		return "0";
 	}
@@ -20,6 +27,7 @@ std::string CharToString(unsigned char character){
 }
 
 std::string BinaryToHex(std::vector<unsigned char> binary) {
+	// convert binary vector array to hex string
 	std::string hexString;
 	for (int i = 0; i < binary.size() / 4; i++) {
 		std::string currentHexChar;
@@ -79,6 +87,7 @@ std::string BinaryToHex(std::vector<unsigned char> binary) {
 }
 
 std::vector<unsigned char> HexToBinary(std::string hexString) {
+	// convert hex string to binary vector array
 	std::vector<unsigned char> binary;
 	for (char& c : hexString) {
 		if (c == '0') {
@@ -177,11 +186,17 @@ std::vector<unsigned char> HexToBinary(std::string hexString) {
 			binary.push_back(1);
 			binary.push_back(1);
 		}
+		else {
+			std::cout << "Fatal error: Invalid hex character encountered, closing program" << std::endl;
+			std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+			exit(1);
+		}
 	}
 	return binary;
 }
 
 std::vector<unsigned char> DecimalToBinary(unsigned char decimal) {
+	// convert unsigned char decimal to binary
 	std::vector<unsigned char> binaryByte;
 	float currentDecimal = decimal;
 	for (int i = 0; i < 8; i++) {
@@ -280,12 +295,12 @@ std::vector<unsigned char> Decrypt(std::vector<unsigned char> inputData, std::ve
 std::vector<unsigned char> bitmaskGenerator(int size) {
 	// Valid bitmask sizes: 8-bit, 16-bit, 32-bit, 64-bit, 128-bit, 256-bit
 	std::vector<unsigned char> bitmask;
-	std::cout << "Generating bitmask key..." << std::endl;
+	std::cout << "Generating encryption key..." << std::endl;
 	srand(time(NULL));
 	for (int i = 0; i < size; i++) {
 		bitmask.push_back(rand()%2);
 	}
-	std::cout << "Bitmask key generated! Save the key to decrypt your files: ";
+	std::cout << "Encryption key generated. Copy the key and save it somewhere to decrypt your files: ";
 	// Get string from unsigned char vector
 	std::string bitmaskString;
 	for (unsigned char c : bitmask) {
@@ -302,11 +317,10 @@ std::vector<unsigned char> bitmaskGenerator(int size) {
 }
 
 void EncryptionDecryptionProcess(bool decrypt, int bitmaskSize, std::string encryptionFolder) {
-	// 16-bit bitmask as encryption key, more bits can be added for 32, 64, 128 or 256 bit encryption
-	std::vector<unsigned char> bitmask; // { 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1 }
+	std::vector<unsigned char> bitmask;
 	if (decrypt) {
 		std::string keyInput;
-		std::cout << "Enter bitmask key: " << std::endl;
+		std::cout << "Enter encryption key: " << std::endl;
 		std::cin >> keyInput;
 
 		bitmask = HexToBinary(keyInput);
@@ -318,7 +332,6 @@ void EncryptionDecryptionProcess(bool decrypt, int bitmaskSize, std::string encr
 	
 
 	// get folder(s) to encrypt
-	//std::string encryptionFolder = "C:\\Users\\TimAn\\source\\repos\\ransomware test\\x64\\Debug\\scheithomo\\";
 	for (const auto& entry : fs::recursive_directory_iterator(encryptionFolder))
 		// check if directory entry is a subdirectory
 		if (entry.is_directory() == false) {
@@ -365,31 +378,37 @@ void EncryptionDecryptionProcess(bool decrypt, int bitmaskSize, std::string encr
 				encryptedFile.close();
 			}
 		}
-	std::string nigs;
-	std::cout << "done" << std::endl;
-	std::cin >> nigs;
+	std::string waitForUserInput;
+	std::cout << "Done" << std::endl;
+	std::cin >> waitForUserInput;
 };
 
 int main() {
 	std::string choice;
+	std::string waitForUserInput;
 
-	std::cout << "recommended to run in safe environment do you want to continue? (y/n)" << std::endl;
+	std::cout << "The program can cause harm to your files, do you want to continue? (y/n)" << std::endl;
 	std::cin >> choice;
 
 	if (choice == "yes" || choice == "y") {
 		std::string encryptionFolder, choice2;
 
-		std::cout << "enter the path of the folder you want to encrypt or decrypt: ";
+		std::cout << "Enter the path of the folder you want to encrypt or decrypt: ";
 		encryptionFolder = fixed_getline();
+		if (doesPathExist(encryptionFolder) == false) {
+			std::cout << "Path does not exist, closing program" << std::endl;
+			std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+			exit(1);
+		}
 
-		std::cout << "do you want to encrypt or decrypt?" << std::endl;
+		std::cout << "Encrypt or decrypt?" << std::endl;
 		choice2 = fixed_getline();
 
 		bool decrypt;
 		int bitmaskSize = 8;
 		if (choice2 == "encrypt") {
 			decrypt = false;
-			std::cout << "Enter key size in bits (8, 16, 32, 64, 128, 256) (default: 8): " << std::endl;
+			std::cout << "Enter key size in bits (8, 16, 32, 64, 128, 256): " << std::endl;
 			std::cin >> bitmaskSize;
 		}
 		else if (choice2 == "decrypt") {
